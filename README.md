@@ -13,6 +13,14 @@ You can now make changes to the website and see them by going to `http://localho
 Note: Because of Nodemon, you do NOT need to stop and restart nodemon every time you make a change, 
 it will reflect automatically.
 
+## Viewing Current Dev Branch
+If you'd like to see the currently deployed development branch in the production environment,
+it is automatically deployed to the development Heroku instance [here](https://clemsonesports-dev.herokuapp.com) 
+when a merge is made.
+
+The production website will work the same way (of course, with the production URL when that time comes) where 
+merges to main/master will automatically be deployed when a merge is finalized.
+
 ## Adding an issue or feature
 For the time being, we're currently using Github Projects to manage who's working on what.
 
