@@ -1,0 +1,44 @@
+/*
+Before you add to this file, make sure what you're trying to do doesn't currently exist in Materialize:
+https://materializecss.com
+*/
+
+/* MARK: Site-wide theming */
+body {
+    color: white;
+    background-color: #222222;
+}
+/* END Site-wide theming*/
+
+/* MARK: Clemson Colors */
+.clemson-orange {
+    background-color: #F56600;
+}
+
+.clemson-orange-text {
+    color: #F56600;
+}
+
+.clemson-orange:hover {
+    /* This is the Clemson 'Campus Brick' color. */
+    background-color: #B94700 !important;
+}
+/* END Clemson Colors */
+
+/* MARK: Mobile reliability */
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+  
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+/* END Mobile reliability */
