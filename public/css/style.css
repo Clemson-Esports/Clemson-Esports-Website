@@ -1,12 +1,23 @@
 /*
-Before you add to this file, make sure what you're trying to do doesn't currently exist in Materialize:
-https://materializecss.com
+Before you add to this file, make sure what you're trying to do doesn't currently exist in MDL:
+https://getmdl.io/components/index.html
 */
 
 /* MARK: Site-wide theming */
-body {
-    color: white;
+main {
     background-color: #222222;
+}
+.material-icons {
+    color: white;
+}
+.mdl-layout__header-row {
+    background: #000;
+} 
+.clemson-esports {
+    padding: 5em;
+}
+.clemson-esports {
+    color: white;
 }
 /* END Site-wide theming*/
 
@@ -24,21 +35,3 @@ body {
     background-color: #B94700 !important;
 }
 /* END Clemson Colors */
-
-/* MARK: Mobile reliability */
-@media only screen and (max-width : 992px) {
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
-    }
-    #index-banner .section {
-        top: 10%;
-    }
-}
-  
-@media only screen and (max-width : 600px) {
-    #index-banner .section {
-        top: 0;
-    }
-}
-/* END Mobile reliability */
