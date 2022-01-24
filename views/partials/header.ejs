@@ -1,8 +1,30 @@
-<head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
-    <link rel="shortcut icon" href="public/images/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><%- title %> | Clemson Esports</title>
-</head>
+<header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><a style="text-decoration:none;color:white;" href="/"><img src="/public/images/navbar-logo.png" alt="Loading..." style="height:32px;"></a></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="about">About</a>
+            <a class="mdl-navigation__link" href="rosters">Rosters</a>
+            <a class="mdl-navigation__link" href="events">Events</a>
+            <a class="mdl-navigation__link" href="stream">Stream</a>
+            <a class="mdl-navigation__link" href="contact">Contact</a>
+            <button type="button" class="mdl-chip">
+                <span class="mdl-chip__text">Discord</span>
+            </button>
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer">
+    <a href="/" style="text-decoration:none;color:black;"><span class="mdl-layout-title"><img src="/public/images/navbar-logo.png" alt="Loading..." style="height:32px;margin-top:16px;"></span></a>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="about">About</a>
+        <a class="mdl-navigation__link" href="rosters">Rosters</a>
+        <a class="mdl-navigation__link" href="events">Events</a>
+        <a class="mdl-navigation__link" href="stream">Stream</a>
+        <a class="mdl-navigation__link" href="contact">Contact</a>
+        <a class="mdl-navigation__link" href="discord">Discord</a>
+    </nav>
+</div>
