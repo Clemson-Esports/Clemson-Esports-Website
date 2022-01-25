@@ -23,6 +23,7 @@ Future development:
 
 router.get('/', (req, res) => { res.render('index', {title: "Home"}) });
 router.get('/about', (req, res) => { res.render('about', {title: "About Us"}) });
+router.get('/stream', (req, res) => { res.render('stream', {title: "Stream"}) });
 router.get('/rosters', (req, res) => { res.render('rosters', {title: "Rosters"}) });
 router.get('/events', (req, res) => { res.render('events', {title: "Upcoming Events"}) });
 router.get('/contact', (req, res) => { res.render('contact', {title: "Contact Us"}) });
