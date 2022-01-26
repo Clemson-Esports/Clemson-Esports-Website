@@ -18,13 +18,13 @@ For res.render:
 
 Future development:
 - One way to pass Discord roles to the rosters page is to create another parameter,
-  maybe 'rosterInfo', into the object that title resides in for that page.
+  maybe 'roster', into the object that title resides in for that page.
 */
 
 router.get('/', (req, res) => { res.render('index', {title: "Home"}) });
 router.get('/about', (req, res) => { res.render('about', {title: "About Us"}) });
 router.get('/stream', (req, res) => { res.render('stream', {title: "Stream"}) });
-router.get('/rosters', (req, res) => { res.render('rosters', {title: "Rosters"}) });
+router.get('/rosters', (req, res) => { res.render('rosters', {title: "Rosters", roster: global.roster || {} }) });
 router.get('/events', (req, res) => { res.render('events', {title: "Upcoming Events"}) });
 router.get('/contact', (req, res) => { res.render('contact', {title: "Contact Us"}) });
 router.get('/discord', (req, res) => { res.render('discord', {title: "Join Us"}) });
