@@ -5,7 +5,7 @@
         <div class="mdl-typography--text-center clemson-esports">
             <h1>Our Teams</h1>
             <% Object.keys(roster).forEach(function(team) { %>
-                <h1 style="background-color: <%= roster[team].color %>;">Team: <%= team %></h1>
+                <h1 style="background-color: <%= //roster[team].color %>;">Team: <%= team %></h1>
                 <p><% roster[team].members.forEach(member => { %>
                     <h1><%= member.name %></h1>
                     <img style="border-radius: 50%;" src="<%-member.image_cdn%>" />
