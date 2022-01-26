@@ -31,7 +31,7 @@ client.once('ready', () => {
 });
 
 // Login to Discord with your client's token
-client.login("OTM1NjY0MjcwNjczMzQ2NTkw.YfB7QQ.s5iPIg85-SMMFr36RIKqF_Nr7RA");
+client.login(process.env.DISCORD_TOKEN);
 
 // {
 // 	"role" {
