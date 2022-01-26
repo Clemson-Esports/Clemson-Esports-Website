@@ -32,13 +32,3 @@ client.once('ready', () => {
 
 // Login to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
-
-// {
-// 	"role" {
-// 		"users" {
-// 			"name": "penis",
-// 			"image_cdn": "http://"
-// 		}
-// 		"color": "red"
-// 	}
-// }
