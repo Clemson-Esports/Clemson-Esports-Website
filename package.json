@@ -1,6 +1,9 @@
 {
   "name": "clemson-esports-website",
   "version": "1.0.0",
+  "engines": {
+    "node": "17.2"
+  },
   "description": "",
   "main": "start.js",
   "scripts": {
