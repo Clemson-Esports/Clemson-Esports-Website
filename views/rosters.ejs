@@ -6,17 +6,16 @@
             <h1>Our Teams</h1>
             <div class="mdl-grid">
                 <% Object.keys(roster).sort((a,b) =>  a.split(' ').pop().replace('Black', 'ZZZ').localeCompare( b.split(' ').pop().replace('Black', 'ZZZ')) ).forEach(function(team) { %>
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-co"
-                    style="background-color: <%= roster[team].color %>;">
+                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-co" style="background-color: <%= roster[team].color %>;">
                     <div class="mdl-card__title white-text">
                         <h2 class="mdl-card__title-text">
-                            <%= team %>
+                            <strong><img src="<%= roster[team].icon %>" style="margin-right: 15px; height: 50px;"/><%= team %></strong>
                         </h2>
                     </div>
                     <div class="mdl-card__supporting-text">
                         <% roster[team].members.forEach(member=> { %>
                         <div class="mdl-list">
-                            <div class="mdl-list__item">
+                            <div class="mdl-list__item mdl-shadow--2dp">
                                 <span class="mdl-list__item-primary-content">
                                     <img class="mdl-list__item-avatar" src="<%-member.image_cdn%>"></img>
                                     <span><%= member.name %></span>
