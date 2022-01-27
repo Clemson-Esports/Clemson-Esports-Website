@@ -35,3 +35,9 @@ main {
     background-color: #B94700 !important;
 }
 /* END Clemson Colors */
+
+/* MARK: Roster Stuff */
+.mdl-list__item {
+    background-color: white;
+    border-radius: 50px;
+}

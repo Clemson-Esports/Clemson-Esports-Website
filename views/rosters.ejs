@@ -4,13 +4,30 @@
     <main class="mdl-layout__content">
         <div class="mdl-typography--text-center clemson-esports">
             <h1>Our Teams</h1>
-            <% Object.keys(roster).forEach(function(team) { %>
-                <h1 style="background-color: <%= roster[team].color %>;">Team: <%= team %></h1>
-                <p><% roster[team].members.forEach(member => { %>
-                    <h1><%= member.name %></h1>
-                    <img style="border-radius: 50%;" src="<%-member.image_cdn%>" />
-                <%});%></p>
-              <%});%>
+            <div class="mdl-grid">
+                <% Object.keys(roster).sort((a,b) =>  a.split(' ').pop().replace('Black', 'ZZZ').localeCompare( b.split(' ').pop().replace('Black', 'ZZZ')) ).forEach(function(team) { %>
+                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-co"
+                    style="background-color: <%= roster[team].color %>;">
+                    <div class="mdl-card__title white-text">
+                        <h2 class="mdl-card__title-text">
+                            <%= team %>
+                        </h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <% roster[team].members.forEach(member=> { %>
+                        <div class="mdl-list">
+                            <div class="mdl-list__item">
+                                <span class="mdl-list__item-primary-content">
+                                    <img class="mdl-list__item-avatar" src="<%-member.image_cdn%>"></img>
+                                    <span><%= member.name %></span>
+                                </span>
+                            </div>
+                        </div>
+                        <%});%>
+                    </div>
+                </div>
+                <%});%>
+            </div>
         </div>
     </main>
 </div>
