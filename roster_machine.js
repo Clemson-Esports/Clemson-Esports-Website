@@ -3,28 +3,33 @@ const { Client, Intents, Interaction } = require('discord.js');
 // const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
+const trackedRoles = require('./roster_roles.json').roles;
+
+console.log("hit");
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	let roster = {}
 
-	const guild = client.guilds.cache.get("863863265594572820");
+	const guild = client.guilds.cache.get("215845807801237514");
 	guild.roles.fetch().then((roles) => {
 		roles.forEach(Role => {
 			guild.members.fetch().then((members) => {
 				let Members = members.filter(member => member.roles.cache.find(role => role == Role)).map(member => { 
 					return { 
-						"name": member.nickname, 
+						"name": member.nickname || member.user.username, 
 						"image_cdn": member.user.avatarURL() ?? ""
 					} 
 				});
 				Members = Members.filter(member => member !== null);
-				roster[Role.name] = {
-					"members": Members,
-					"color": Role.hexColor
-				};
-				global.roster = roster;
-				// console.log(global.roster.admin.members[0].image_cdn);
+				if (trackedRoles.some( roleName => Role.name.includes(roleName)) && Members.length != 0) {
+					console.log(Role.name)
+					roster[Role.name] = {
+						"members": Members,
+						"color": Role.hexColor
+					};
+					global.roster = roster;
+				}
 			});
 		});
 	});
