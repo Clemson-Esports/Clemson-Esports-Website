@@ -14,6 +14,7 @@ client.once('ready', () => {
 	const guild = client.guilds.cache.get("215845807801237514");
 	guild.roles.fetch().then((roles) => {
 		roles.forEach(Role => {
+			
 			guild.members.fetch().then((members) => {
 				let Members = members.filter(member => member.roles.cache.find(role => role == Role)).map(member => { 
 					return { 
@@ -26,7 +27,8 @@ client.once('ready', () => {
 					console.log(Role.name)
 					roster[Role.name] = {
 						"members": Members,
-						"color": Role.hexColor
+						"color": Role.hexColor,
+						"icon": Role.iconURL() ?? ""
 					};
 					global.roster = roster;
 				}
