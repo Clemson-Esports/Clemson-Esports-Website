@@ -5,10 +5,12 @@
         <div class="mdl-typography--text-center clemson-esports">
             <h1>Our Teams</h1>
             <div class="mdl-grid">
-                <% Object.keys(roster).sort((a,b) =>  a.split(' ').pop().replace('Black', 'ZZZ').localeCompare( b.split(' ').pop().replace('Black', 'ZZZ')) ).forEach(function(team) { %>
+                <% Object.keys(roster) // Please don't look below...
+                         .sort((a,b) =>  a.split(' ').pop().replace('Team', 'Z').replace('Black', 'Y').localeCompare( b.split(' ').pop().replace('Team', 'Z').replace('Black', 'Y')) )
+                         .forEach(function(team) { %>
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-co" style="background-color: <%= roster[team].color %>;">
-                    <div class="mdl-card__title white-text">
-                        <h2 class="mdl-card__title-text">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text" style="color: black;">
                             <strong><img src="<%= roster[team].icon %>" style="margin-right: 15px; height: 50px;"/><%= team %></strong>
                         </h2>
                     </div>

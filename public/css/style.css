@@ -42,6 +42,7 @@ main {
 
 /* MARK: Roster Stuff */
 .mdl-list__item {
-    background-color: white;
+    background-color: black;
+    color: white !important;
     border-radius: 50px;
 }
