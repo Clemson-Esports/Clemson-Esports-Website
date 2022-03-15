@@ -9,17 +9,20 @@ const client = new Client({
 		Intents.FLAGS.GUILD_MEMBERS,
 	],
 });
-const trackedRoles = require("./roster_roles.json").roles;
+
+const trackedGamingRoles = require("./roster_roles.json")["gaming-roles"];
+const trackedSupportRoles = require("./roster_roles.json")["support-roles"];
+const gamingExcludes = require("./roster_roles.json")["gaming-excludes"];
+const supportExcludes = require("./roster_roles.json")["support-excludes"];
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
 	let roster = {};
+	let support = {};
 
 	const guild = client.guilds.cache.get("215845807801237514");
 	guild.roles.fetch().then((roles) => {
 		roles.forEach((Role) => {
-			if (Role.name != "Tech Team Leader") {
-				// Leader is in tech team
 				guild.members.fetch().then((members) => {
 					let Members = members
 						.filter((member) => member.roles.cache.find((role) => role == Role))
@@ -31,10 +34,10 @@ client.once("ready", () => {
 						});
 					Members = Members.filter((member) => member !== null);
 					if (
-						trackedRoles.some((roleName) => Role.name.includes(roleName)) &&
+						trackedGamingRoles.some((roleName) => Role.name.includes(roleName)) &&
 						Members.length >= 1
 					) {
-						console.log(Role.name);
+						console.log("[DISCORD] Fetched Roster for", Role.name);
 						roster[Role.name] = {
 							members: Members,
 							color: Role.hexColor,
@@ -42,8 +45,21 @@ client.once("ready", () => {
 						};
 						global.roster = roster;
 					}
+
+					if (
+						trackedSupportRoles.some((roleName) => Role.name.includes(roleName)) &&
+						Members.length >= 1 &&
+						!Role.name.includes(supportExcludes)
+					) {
+						console.log("[DISCORD] Fetched Support for", Role.name);
+						support[Role.name] = {
+							members: Members,
+							color: Role.hexColor,
+							icon: Role.iconURL() ?? "",
+						};
+						global.support = support;
+					}
 				});
-			}
 		});
 	});
 });

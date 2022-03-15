@@ -1,9 +1,18 @@
 {
-    "roles": [
+    "gaming-excludes": [],
+    "gaming-roles": [
         "Orange",
         "Purple",
         "White",
-        "Black",
-        "Tech"
+        "Black"
+    ],
+    "support-excludes": [
+        "Leader"
+    ],
+    "support-roles": [
+        "General Managers",
+        "Content Team",
+        "Tech Team",
+        "Officers"
     ]
 }
