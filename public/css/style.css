@@ -46,3 +46,27 @@ main {
     color: white !important;
     border-radius: 50px;
 }
+/* END: Roster Stuff */
+
+/* MARK: About Stuff */
+.about-absolute-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-no-margins{
+    padding: 0px;
+    margin: 0px;
+}
+.about-button-container{
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+.about-image{
+    width: 100%;
+    padding-top: 30px;
+    object-fit: cover;
+}
+/* END: About Stuff */
