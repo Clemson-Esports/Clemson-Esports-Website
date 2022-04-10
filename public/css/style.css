@@ -71,7 +71,8 @@ main {
 }
 
 .about-text{
-    width: 80%;
+    padding-top: 0px;
+    width: 70%;
 }
 
 .about-button{
