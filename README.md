@@ -13,6 +13,17 @@ You can now make changes to the website and see them by going to `http://localho
 Note: Because of Nodemon, you do NOT need to stop and restart nodemon every time you make a change, 
 it will reflect automatically.
 
+### (Optional) Setting Up the Discord Roster Bot
+If you want the Discord roster bot to run, you will need to complete some additional steps.
+
+1. Go to the Discord Developer Applications portal and create an app: https://discord.com/developers/applications/
+2. In the root folder of the website repository, create a new file called `.env` and open it.
+3. In the `.env` file, add the following: `DISCORD_TOKEN=<your-bot-token-here>` replacing `<your-bot-token-here>` with the bot token you obtained from Discord.
+
+The bot should now automatically start up when run `nodemon`.
+
+Please note you will also need to add the bot to the Clemson Esports Discord in order for it to work. 
+
 ## Viewing Current Dev Branch
 If you'd like to see the currently deployed development branch in the production environment,
 it is automatically deployed to the development Heroku instance [here](https://clemsonesports-dev.herokuapp.com) 
