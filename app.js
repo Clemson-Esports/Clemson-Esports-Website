@@ -3,6 +3,7 @@ const routes = require('./routes/index');
 const subroutes = require('./routes/subroutes')
 const subdomain = require('express-subdomain');
 
+require('dotenv').config();
 if (process.env.DISCORD_TOKEN) {
     const roster = require("./roster_machine");
 }
