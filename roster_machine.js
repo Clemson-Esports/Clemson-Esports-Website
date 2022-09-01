@@ -22,8 +22,8 @@ client.once("ready", () => {
 
 	const guild = client.guilds.cache.get("215845807801237514");
 	guild.roles.fetch().then((roles) => {
-		roles.forEach((Role) => {
-				guild.members.fetch().then((members) => {
+		guild.members.fetch().then((members) => {
+				roles.forEach((Role) => {
 					let Members = members
 						.filter((member) => member.roles.cache.find((role) => role == Role))
 						.map((member) => {
