@@ -1,6 +1,5 @@
 // Require the necessary discord.js classes
 const { Client, Intents, Interaction } = require("discord.js");
-// const { token } = require('./config.json');
 
 const client = new Client({
 	intents: [
@@ -9,41 +8,58 @@ const client = new Client({
 		Intents.FLAGS.GUILD_MEMBERS,
 	],
 });
-const trackedRoles = require("./roster_roles.json").roles;
+
+const trackedGamingRoles = require("./roster_roles.json")["gaming-roles"];
+const trackedSupportRoles = require("./roster_roles.json")["support-roles"];
+const gamingExcludes = require("./roster_roles.json")["gaming-excludes"];
+const supportExcludes = require("./roster_roles.json")["support-excludes"];
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
 	let roster = {};
+	let support = {};
 
 	const guild = client.guilds.cache.get("215845807801237514");
 	guild.roles.fetch().then((roles) => {
-		roles.forEach((Role) => {
-			if (Role.name != "Tech Team Leader") {
-				// Leader is in tech team
-				guild.members.fetch().then((members) => {
-					let Members = members
-						.filter((member) => member.roles.cache.find((role) => role == Role))
-						.map((member) => {
-							return {
-								name: member.nickname || member.user.username,
-								image_cdn: member.user.avatarURL() ?? "",
-							};
-						});
-					Members = Members.filter((member) => member !== null);
-					if (
-						trackedRoles.some((roleName) => Role.name.includes(roleName)) &&
-						Members.length >= 1
-					) {
-						console.log(Role.name);
-						roster[Role.name] = {
-							members: Members,
-							color: Role.hexColor,
-							icon: Role.iconURL() ?? "",
+		guild.members.fetch().then((members) => {
+			roles.forEach((Role) => {
+				let Members = members
+					.filter((member) => member.roles.cache.find((role) => role == Role))
+					.map((member) => {
+						return {
+							name: member.nickname || member.user.username,
+							image_cdn: member.user.avatarURL() ?? "",
 						};
-						global.roster = roster;
-					}
-				});
-			}
+					});
+				Members = Members.filter((member) => member !== null);
+				if (
+					trackedGamingRoles.some((roleName) => Role.name.includes(roleName)) &&
+					Members.length >= 1
+				) {
+					console.log("[DISCORD] Fetched Roster for", Role.name);
+					roster[Role.name] = {
+						members: Members,
+						color: Role.hexColor,
+						icon: Role.iconURL() ?? "",
+					};
+					global.roster = roster;
+					process.send([roster, support]);
+				}
+
+				if (
+					trackedSupportRoles.some((roleName) => Role.name.includes(roleName)) &&
+					Members.length >= 1 &&
+					!Role.name.includes(supportExcludes)
+				) {
+					console.log("[DISCORD] Fetched Support for", Role.name);
+					support[Role.name] = {
+						members: Members,
+						color: Role.hexColor,
+						icon: Role.iconURL() ?? "",
+					};
+					global.support = support;
+				}
+			});
 		});
 	});
 });
